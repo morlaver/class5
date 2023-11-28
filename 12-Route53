@@ -1,11 +1,11 @@
 data "aws_route53_zone" "selected" {
-  name         = "test.com."
+  name         = "test.com."                             #name of the domain
   private_zone = true
 }
 
 resource "aws_route53_record" "www" {
   zone_id = data.aws_route53_zone.selected.zone_id
-  name    = "www.${data.aws_route53_zone.selected.name}"
+  name    = "www.${data.aws_route53_zone.selected.name}"   # name of the domain
   type    = "A"
 
 alias {
